@@ -139,7 +139,6 @@ Si votre application hôte embarque déjà Capacitor ou des plugins identiques, 
 - `docs/ios/AUTH_SSO.md` : contrat SSO / token IAM (responsabilités hôte vs SDK)
 - `docs/ios/ARCHITECTURE.md` : architecture du conteneur iOS
 - `docs/ios/CUSTOMIZATION.md` : options de personnalisation
-- `docs/ios/IONIC_INTEGRATION.md` : intégration/build de l’app Ionic dans le SDK (côté équipe SDK)
 
 ### 📄 Licence
 
