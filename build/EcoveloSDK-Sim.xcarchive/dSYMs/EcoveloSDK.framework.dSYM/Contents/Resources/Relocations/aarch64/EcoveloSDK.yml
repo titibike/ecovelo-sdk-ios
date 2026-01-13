@@ -1,0 +1,25 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/enzo/Library/Developer/Xcode/DerivedData/EcoveloSDK-etjilvgtgapyedgvyhwszpvxvzkz/Build/Intermediates.noindex/ArchiveIntermediates/EcoveloSDK/InstallationBuildProductsLocation/Library/Frameworks/EcoveloSDK.framework/EcoveloSDK'
+relocations:
+  - { offset: 0x54DCD, size: 0x8, addend: 0x0, symName: _EcoveloSDKVersionString, symObjAddr: 0x0, symBinAddr: 0x16F0, symSize: 0x0 }
+  - { offset: 0x54E04, size: 0x8, addend: 0x0, symName: _EcoveloSDKVersionNumber, symObjAddr: 0x30, symBinAddr: 0x1720, symSize: 0x0 }
+  - { offset: 0x54E42, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK0A0O18makeViewController7messageSo06UIViewE0CSS_tFZ', symObjAddr: 0x0, symBinAddr: 0xE30, symSize: 0x8C }
+  - { offset: 0x54F73, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK21MessageViewControllerCMa', symObjAddr: 0x8C, symBinAddr: 0xEBC, symSize: 0x20 }
+  - { offset: 0x54F87, size: 0x8, addend: 0x0, symName: ___swift_memcpy0_1, symObjAddr: 0xAC, symBinAddr: 0xEDC, symSize: 0x4 }
+  - { offset: 0x54F9B, size: 0x8, addend: 0x0, symName: ___swift_noop_void_return, symObjAddr: 0xB0, symBinAddr: 0xEE0, symSize: 0x4 }
+  - { offset: 0x54FAF, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK0A0Owet', symObjAddr: 0xB4, symBinAddr: 0xEE4, symSize: 0x50 }
+  - { offset: 0x54FC3, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK0A0Owst', symObjAddr: 0x104, symBinAddr: 0xF34, symSize: 0x7C }
+  - { offset: 0x54FD7, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK0A0Owug', symObjAddr: 0x180, symBinAddr: 0xFB0, symSize: 0x8 }
+  - { offset: 0x54FEB, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK0A0Owup', symObjAddr: 0x188, symBinAddr: 0xFB8, symSize: 0x4 }
+  - { offset: 0x54FFF, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK0A0OMa', symObjAddr: 0x190, symBinAddr: 0xFBC, symSize: 0x10 }
+  - { offset: 0x5504A, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK21MessageViewControllerCfETo', symObjAddr: 0x6D8, symBinAddr: 0x1504, symSize: 0x14 }
+  - { offset: 0x55079, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledNameV2, symObjAddr: 0x6EC, symBinAddr: 0x1518, symSize: 0x44 }
+  - { offset: 0x5508D, size: 0x8, addend: 0x0, symName: '_$sSo18NSLayoutConstraintCMa', symObjAddr: 0x730, symBinAddr: 0x155C, symSize: 0x44 }
+  - { offset: 0x55180, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK0A0O18makeViewController7messageSo06UIViewE0CSS_tFZ', symObjAddr: 0x0, symBinAddr: 0xE30, symSize: 0x8C }
+  - { offset: 0x55201, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK21MessageViewControllerC5coderACSgSo7NSCoderC_tcfcTo', symObjAddr: 0x1A0, symBinAddr: 0xFCC, symSize: 0x58 }
+  - { offset: 0x5526A, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK21MessageViewControllerC11viewDidLoadyyF', symObjAddr: 0x1F8, symBinAddr: 0x1024, symSize: 0x44C }
+  - { offset: 0x55345, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK21MessageViewControllerC11viewDidLoadyyFTo', symObjAddr: 0x644, symBinAddr: 0x1470, symSize: 0x34 }
+  - { offset: 0x5536D, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK21MessageViewControllerC7nibName6bundleACSSSg_So8NSBundleCSgtcfcTo', symObjAddr: 0x678, symBinAddr: 0x14A4, symSize: 0x2C }
+  - { offset: 0x553C2, size: 0x8, addend: 0x0, symName: '_$s10EcoveloSDK21MessageViewControllerCfD', symObjAddr: 0x6A4, symBinAddr: 0x14D0, symSize: 0x34 }
+...

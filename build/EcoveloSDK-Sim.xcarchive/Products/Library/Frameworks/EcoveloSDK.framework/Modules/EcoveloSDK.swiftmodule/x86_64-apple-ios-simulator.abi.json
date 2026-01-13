@@ -1,0 +1,86 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "EcoveloSDK",
+    "printedName": "EcoveloSDK",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Ecovelo",
+        "printedName": "Ecovelo",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "makeViewController",
+            "printedName": "makeViewController(message:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10EcoveloSDK0A0O18makeViewController7messageSo06UIViewE0CSS_tFZ",
+            "mangledName": "$s10EcoveloSDK0A0O18makeViewController7messageSo06UIViewE0CSS_tFZ",
+            "moduleName": "EcoveloSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:10EcoveloSDK0A0O",
+        "mangledName": "$s10EcoveloSDK0A0O",
+        "moduleName": "EcoveloSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/enzo\/Desktop\/DEV\/CITYWAY\/EcoveloSDK\/EcoveloSDK\/Ecovelo.swift",
+      "kind": "StringLiteral",
+      "offset": 178,
+      "length": 28,
+      "value": "\"Hello from EcoveloSDK 👋\""
+    }
+  ]
+}
