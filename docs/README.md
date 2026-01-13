@@ -142,4 +142,4 @@ Si votre application hôte embarque déjà Capacitor ou des plugins identiques, 
 
 ### 📄 Licence
 
-Propriétaire — Ecovelo © 2024–2025
+Propriétaire — Ecovelo © 
