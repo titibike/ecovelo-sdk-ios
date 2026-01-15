@@ -8,5 +8,7 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 public enum Ecovelo {
-  public static func makeViewController(message: Swift.String = "Hello from EcoveloSDK 👋") -> UIKit.UIViewController
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func makeViewController(initialPath: Swift.String? = nil, payload: [Swift.String : Any]? = nil, onClose: (() -> Swift.Void)? = nil) -> UIKit.UIViewController
+  #endif
 }

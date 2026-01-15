@@ -19,7 +19,7 @@
           {
             "kind": "Function",
             "name": "makeViewController",
-            "printedName": "makeViewController(message:)",
+            "printedName": "makeViewController(initialPath:payload:onClose:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -29,15 +29,77 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
                 "hasDefaultArg": true,
-                "usr": "s:SS"
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:10EcoveloSDK0A0O18makeViewController7messageSo06UIViewE0CSS_tFZ",
-            "mangledName": "$s10EcoveloSDK0A0O18makeViewController7messageSo06UIViewE0CSS_tFZ",
+            "usr": "s:10EcoveloSDK0A0O18makeViewController11initialPath7payload7onCloseSo06UIViewE0CSSSg_SDySSypGSgyycSgtFZ",
+            "mangledName": "$s10EcoveloSDK0A0O18makeViewController11initialPath7payload7onCloseSo06UIViewE0CSSSg_SDySSypGSgyycSgtFZ",
             "moduleName": "EcoveloSDK",
             "static": true,
             "declAttributes": [
@@ -74,13 +136,5 @@
     ],
     "json_format_version": 8
   },
-  "ConstValues": [
-    {
-      "filePath": "\/Users\/enzo\/Desktop\/DEV\/CITYWAY\/EcoveloSDK\/EcoveloSDK\/Ecovelo.swift",
-      "kind": "StringLiteral",
-      "offset": 178,
-      "length": 28,
-      "value": "\"Hello from EcoveloSDK 👋\""
-    }
-  ]
+  "ConstValues": []
 }

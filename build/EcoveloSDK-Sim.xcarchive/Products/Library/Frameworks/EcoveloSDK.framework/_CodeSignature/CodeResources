@@ -10,43 +10,43 @@
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		VwWPXYQElt+xfTMTrR0jIZXS2T4=
+		iXw85EN3NIQ2nIfGSHKQnBhlwP4=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		Em9GJh3cwkkq+S3B/jL4hPjO3ys=
+		aH/vWO4uuGAnzA+SIEAv4Q/wo3M=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		w1WpCZtxhXMZ6pGiV4oLX7CB1vY=
+		9ihtllprRH7u0JIm40qXnbxCpRg=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Em9GJh3cwkkq+S3B/jL4hPjO3ys=
+		aH/vWO4uuGAnzA+SIEAv4Q/wo3M=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		15xdC7UvxIB9h+BYwW7hypH9LVA=
+		eEwRy38SK1Ab45Cy/5ZzPPS4gOg=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		VwWPXYQElt+xfTMTrR0jIZXS2T4=
+		iXw85EN3NIQ2nIfGSHKQnBhlwP4=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		OjNKGqMXr5VyzrCVa0j1YEyWekg=
+		sUQdMlwbVvtLH/1vQeibZ5enmhk=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		X4KsBvXvbWx++WJ+1ShgVnmRqx4=
+		XX1eszUITYQwhCLJqrDNZJ8D+D0=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		OjNKGqMXr5VyzrCVa0j1YEyWekg=
+		sUQdMlwbVvtLH/1vQeibZ5enmhk=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		tf5NSawA3lru9ur3lLrk842N/Xo=
+		1ZlChSMXi8ltyNumBTnlCvdu0zY=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -55,70 +55,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			130gviOFT1KxEwlTN1kYmekFuK89EpmEy7+Hs85jsOI=
+			3uszpgMEJgvZOODdjGLTx3DRd31Schef8ccmJ4B9s+w=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DH6/Ju4OmFpElkjsqHpju1fCM/Rkv+6BXOuQhQlMQ7A=
+			DOfi27NoKQ3w8CRlJjChUbjT3A5C/5D6dI9rKXs5mOE=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+IOF614T5i7+M0ecHRLQKYQzMu9eZibqHnriY058q+w=
+			OEUIAGxfCFYW2RBi86ENVHoesOvRHplzA2o7jye3bPY=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DH6/Ju4OmFpElkjsqHpju1fCM/Rkv+6BXOuQhQlMQ7A=
+			DOfi27NoKQ3w8CRlJjChUbjT3A5C/5D6dI9rKXs5mOE=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YbCM/GYm/8zr9OlcpGtf4n/P0K4bbuH5ISKpFCjJJfQ=
+			LxZfdVLexGfM5/8i0UITtu6JaNsOZZZjCGH0+Xrsfto=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			130gviOFT1KxEwlTN1kYmekFuK89EpmEy7+Hs85jsOI=
+			3uszpgMEJgvZOODdjGLTx3DRd31Schef8ccmJ4B9s+w=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KMZBxc+BhdvNwEDrVsYiNj9VUv0tP5ul0y7fUvttIEM=
+			N0s6EA5S6RNU/nhwYs5XZMmPaYSS/vdO5bRcN5VuZ5A=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mQrU1Ky2WPFCAyW2SxvynYI4CO+YIPEJKscAK9qM0nw=
+			ldTYi2eXB+Ma4K/1sCRpn3E0W9csyE3dOw3epDM67dU=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KMZBxc+BhdvNwEDrVsYiNj9VUv0tP5ul0y7fUvttIEM=
+			N0s6EA5S6RNU/nhwYs5XZMmPaYSS/vdO5bRcN5VuZ5A=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AZK1gKmwVDyglXWoI8aSOglxHyaQua9q5IYqqHZAVYg=
+			pOsWthsxb4KTpvI9QYmG7BOtpR1ItChalOUx06wZFOk=
 			</data>
 		</dict>
 	</dict>

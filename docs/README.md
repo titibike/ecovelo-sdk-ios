@@ -143,3 +143,31 @@ Si votre application hôte embarque déjà Capacitor ou des plugins identiques, 
 ### 📄 Licence
 
 Propriétaire — Ecovelo © 
+
+
+COMMANDES POUR BUILD LE XCFRAMEWORK : 
+
+rm -rf build
+
+xcodebuild archive \
+  -scheme EcoveloSDK \
+  -configuration Release \
+  -destination "generic/platform=iOS" \
+  -archivePath "./build/EcoveloSDK-iOS" \
+  SKIP_INSTALL=NO \
+  BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+
+  xcodebuild archive \
+  -scheme EcoveloSDK \
+  -configuration Release \
+  -destination "generic/platform=iOS Simulator" \
+  -archivePath "./build/EcoveloSDK-Sim" \
+  SKIP_INSTALL=NO \
+  BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+
+  xcodebuild -create-xcframework \
+  -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
+  -framework "./build/EcoveloSDK-Sim.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
+  -output "./build/EcoveloSDK.xcframework"
+
+
