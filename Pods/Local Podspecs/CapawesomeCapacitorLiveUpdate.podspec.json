@@ -1,0 +1,28 @@
+{
+  "name": "CapawesomeCapacitorLiveUpdate",
+  "version": "8.1.0",
+  "summary": "Capacitor plugin to update your app remotely in real-time.",
+  "license": "MIT",
+  "homepage": "git+https://github.com/capawesome-team/capacitor-plugins.git",
+  "authors": "Robin Genz <mail@robingenz.dev>",
+  "source": {
+    "git": "git+https://github.com/capawesome-team/capacitor-plugins.git",
+    "tag": "8.1.0"
+  },
+  "source_files": "ios/Plugin/**/*.{swift,h,m,c,cc,mm,cpp}",
+  "platforms": {
+    "ios": "15.0"
+  },
+  "dependencies": {
+    "Capacitor": [],
+    "Alamofire": [
+      "~> 5.10.2"
+    ],
+    "ZIPFoundation": [
+      "~> 0.9.0"
+    ]
+  },
+  "swift_versions": "5.1",
+  "static_framework": true,
+  "swift_version": "5.1"
+}
