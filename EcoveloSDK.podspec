@@ -13,9 +13,5 @@ Pod::Spec.new do |s|
   
     # Files
     s.source_files = 'EcoveloSDK/Ecovelo.swift'
-  
-    # Only Capacitor base
-    s.dependency 'Capacitor'
-    s.dependency 'CapacitorCordova'
   end
   
