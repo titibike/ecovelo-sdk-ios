@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     s.dependency 'SentryCapacitor'
     
     # Fichiers sources Swift de ton SDK
-    s.source_files     = '/Users/enzo/Desktop/DEV/CITYWAY/EcoveloSDK/EcoveloSDK/Ecovelo.swift'
+    s.source_files     = 'EcoveloSDK/Ecovelo.swift'
   
     # Si tu utilises des ressources supplémentaires, tu peux les ajouter ici
     # s.resource_bundles = {
