@@ -6,7 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C6529A9C2F191F02003F1451 /* Pods_EcoveloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6873CC3410955D6E7D7371F /* Pods_EcoveloSDK.framework */; };
+		C6529A9D2F191F02003F1451 /* Pods_EcoveloSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6873CC3410955D6E7D7371F /* Pods_EcoveloSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C6529A9E2F191F02003F1451 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C6529A9D2F191F02003F1451 /* Pods_EcoveloSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2F70B6DE3BC33A2055E80907 /* Pods-EcoveloSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoveloSDK.release.xcconfig"; path = "Target Support Files/Pods-EcoveloSDK/Pods-EcoveloSDK.release.xcconfig"; sourceTree = "<group>"; };
+		A6873CC3410955D6E7D7371F /* Pods_EcoveloSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EcoveloSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB918D067562A73D2090E707 /* Pods-EcoveloSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoveloSDK.debug.xcconfig"; path = "Target Support Files/Pods-EcoveloSDK/Pods-EcoveloSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		C644F11E2F154E9600623891 /* EcoveloSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EcoveloSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -23,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6529A9C2F191F02003F1451 /* Pods_EcoveloSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10D84977C2329F6E9BC05E6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB918D067562A73D2090E707 /* Pods-EcoveloSDK.debug.xcconfig */,
+				2F70B6DE3BC33A2055E80907 /* Pods-EcoveloSDK.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BADA42D7FAE23903D9994521 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6873CC3410955D6E7D7371F /* Pods_EcoveloSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C644F1142F154E9600623891 = {
 			isa = PBXGroup;
 			children = (
 				C644F1202F154E9600623891 /* EcoveloSDK */,
 				C644F11F2F154E9600623891 /* Products */,
+				10D84977C2329F6E9BC05E6C /* Pods */,
+				BADA42D7FAE23903D9994521 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,10 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C644F1252F154E9600623891 /* Build configuration list for PBXNativeTarget "EcoveloSDK" */;
 			buildPhases = (
+				B68BF14D700C24A4402952F4 /* [CP] Check Pods Manifest.lock */,
 				C644F1192F154E9600623891 /* Headers */,
 				C644F11A2F154E9600623891 /* Sources */,
 				C644F11B2F154E9600623891 /* Frameworks */,
 				C644F11C2F154E9600623891 /* Resources */,
+				C6529A9E2F191F02003F1451 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -75,8 +119,6 @@
 				C644F1202F154E9600623891 /* EcoveloSDK */,
 			);
 			name = EcoveloSDK;
-			packageProductDependencies = (
-			);
 			productName = EcoveloSDK;
 			productReference = C644F11E2F154E9600623891 /* EcoveloSDK.framework */;
 			productType = "com.apple.product-type.framework";
@@ -124,6 +166,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B68BF14D700C24A4402952F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EcoveloSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C644F11A2F154E9600623891 /* Sources */ = {
@@ -265,6 +332,7 @@
 		};
 		C644F1262F154E9600623891 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB918D067562A73D2090E707 /* Pods-EcoveloSDK.debug.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +370,7 @@
 		};
 		C644F1272F154E9600623891 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F70B6DE3BC33A2055E80907 /* Pods-EcoveloSDK.release.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;

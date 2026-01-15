@@ -1,4 +1,5 @@
 import UIKit
+import Capacitor
 
 public enum Ecovelo {
 
@@ -12,12 +13,12 @@ public enum Ecovelo {
         payload: [String: Any]? = nil,
         onClose: (() -> Void)? = nil
     ) -> UIViewController {
-        EcoveloHostViewController(initialPath: initialPath, payload: payload, onClose: onClose)
+        return EcoveloHostViewController(initialPath: initialPath, payload: payload, onClose: onClose)
     }
 }
 
 /// Host natif : gère la présentation full screen + bouton Close.
-/// À l’étape suivante, il embarquera le CAPBridgeViewController (Capacitor).
+/// Il embarque un `CAPBridgeViewController` pour afficher l'app web.
 final class EcoveloHostViewController: UIViewController {
 
     private let initialPath: String?
@@ -40,28 +41,13 @@ final class EcoveloHostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 
-        // Placeholder tant que Capacitor n'est pas branché
-        let label = UILabel()
-        label.text = """
-        Ecovelo SDK Host ✅
-
-        initialPath: \(initialPath ?? "nil")
-        payload: \(payload != nil ? "✅" : "nil")
-
-        (Capacitor web app not wired yet)
-        """
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 17, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(label)
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24),
-            label.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24)
-        ])
+        // Initialisation du Bridge Capacitor
+        let child = EcoveloBridgeViewController(initialPath: initialPath, payload: payload)
+        addChild(child)
+        view.addSubview(child.view)
+        child.view.frame = view.bounds
+        child.view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        child.didMove(toParent: self)
 
         // Close button
         let closeButton = UIButton(type: .system)
@@ -85,3 +71,42 @@ final class EcoveloHostViewController: UIViewController {
         }
     }
 }
+
+/// ViewController Capacitor pour charger l'app depuis le bundle
+final class EcoveloBridgeViewController: CAPBridgeViewController {
+
+    private let initialPath: String?
+    private let payload: [String: Any]?
+
+    // Designated initializer that sets our parameters and calls super
+    init(initialPath: String?, payload: [String: Any]?) {
+        self.initialPath = initialPath
+        self.payload = payload
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // Fournit un InstanceDescriptor personnalisé pour charger les assets depuis le bundle du framework
+    override func instanceDescriptor() -> InstanceDescriptor {
+        let descriptor = super.instanceDescriptor()
+
+        // Localise le dossier 'public' dans le bundle du framework
+        let bundle = Bundle(for: EcoveloBridgeViewController.self)
+        if let publicURL = bundle.url(forResource: "public", withExtension: nil) {
+            descriptor.appLocation = publicURL
+        } else if let resourcesURL = bundle.resourceURL {
+            descriptor.appLocation = resourcesURL
+        }
+
+        // Si une route initiale est fournie, la définir comme chemin de démarrage
+        if let initialPath = initialPath?.trimmingCharacters(in: CharacterSet(charactersIn: "/")), !initialPath.isEmpty {
+            descriptor.appStartPath = initialPath
+        }
+
+        return descriptor
+    }
+}
+
