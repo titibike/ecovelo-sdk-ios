@@ -1,0 +1,211 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "EcoveloSDK",
+    "printedName": "EcoveloSDK",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Capacitor",
+        "printedName": "Capacitor",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Firebase",
+        "printedName": "Firebase",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Capacitor",
+        "printedName": "Capacitor",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Ecovelo",
+        "printedName": "Ecovelo",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "makeViewController",
+            "printedName": "makeViewController(initialPath:payload:onClose:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10EcoveloSDK0A0O18makeViewController11initialPath7payload7onCloseSo06UIViewE0CSSSg_SDySSypGSgyycSgtFZ",
+            "mangledName": "$s10EcoveloSDK0A0O18makeViewController11initialPath7payload7onCloseSo06UIViewE0CSSSg_SDySSypGSgyycSgtFZ",
+            "moduleName": "EcoveloSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:10EcoveloSDK0A0O",
+        "mangledName": "$s10EcoveloSDK0A0O",
+        "moduleName": "EcoveloSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "DeveloperToolsSupport",
+        "printedName": "DeveloperToolsSupport",
+        "declKind": "Import",
+        "moduleName": "EcoveloSDK"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/enzo\/Desktop\/DEV\/CITYWAY\/EcoveloSDK\/EcoveloSDK\/AppDelegate.swift",
+      "kind": "Dictionary",
+      "offset": 2201,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/enzo\/Library\/Developer\/Xcode\/DerivedData\/EcoveloSDK-dqbttwbkuoipfbalnkswwrxtutbn\/Build\/Intermediates.noindex\/ArchiveIntermediates\/EcoveloSDK\/IntermediateBuildFilesPath\/EcoveloSDK.build\/Release-iphoneos\/EcoveloSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 771,
+      "length": 8,
+      "value": "\"Splash\""
+    }
+  ]
+}
