@@ -24,3 +24,4 @@ Carthage/
 # Xcode user state (local only)
 **/*.xcuserstate
 **/xcuserdata/
+EcoveloSDK/build/

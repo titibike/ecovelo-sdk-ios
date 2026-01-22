@@ -1,0 +1,51 @@
+{
+	"appId": "com.ecovelo.preprod",
+	"appName": "AdeL",
+	"webDir": "www/browser",
+	"plugins": {
+		"LiveUpdate": {
+			"appId": "cc2a07fe-600d-4d50-87a6-5a573ccb8362",
+			"defaultChannel": "v3.0"
+		},
+		"CapacitorShake": {
+			"enabled": true
+		},
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		},
+		"Stripe": {
+			"publishableKey": "pk_test_jxKrw1KL0NWVIaupB9KcTQKw",
+			"merchantIdentifier": "merchant.com.ecovelo.preprod"
+		}
+	},
+	"server": {
+		"androidScheme": "https",
+		"iosScheme": "ecovelo",
+		"hostname": "localhost"
+	},
+	"packageClassList": [
+		"NativeAudio",
+		"StripePlugin",
+		"BarcodeScannerPlugin",
+		"AppPlugin",
+		"AppLauncherPlugin",
+		"CAPBrowserPlugin",
+		"CAPCameraPlugin",
+		"FilesystemPlugin",
+		"GeolocationPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"PreferencesPlugin",
+		"PushNotificationsPlugin",
+		"ScreenOrientationPlugin",
+		"StatusBarPlugin",
+		"LiveUpdatePlugin",
+		"SentryCapacitorPlugin",
+		"NativeSettingsPlugin",
+		"AppTrackingTransparencyPlugin"
+	]
+}
