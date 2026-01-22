@@ -34,7 +34,7 @@
 		</data>
 		<key>Frameworks/Pods_EcoveloSDK.framework/Pods_EcoveloSDK</key>
 		<data>
-		hleSGSWo0XMa4H0y+DlR0tcOJ7w=
+		ujHgk+PYMaM1X+ZwlwmzoHDUgu0=
 		</data>
 		<key>Frameworks/Pods_EcoveloSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		glMdRo8NrStrD+U3jHdzHmtsaFU=
+		5uB1BZ3CIkRUtZvakH8bOvgdgRU=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		uTqK4/xDi9kTbtKCskFmLIhnRfQ=
+		M2PU6OywuIWzHr/NqR3n09CKKk4=
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		OmivB8Dj72Jc5USaN8keo9lamSA=
+		Rj5GFU2TbBD92bzTSa735XkTvRg=
 		</data>
 		<key>bikebell.mp3</key>
 		<data>
@@ -1348,10 +1348,6 @@
 		<data>
 		hQvTIaIYpC2ZRgEVx/mSZzyaImc=
 		</data>
-		<key>public/capacitor.config.json</key>
-		<data>
-		l0DY3W450kbBVLFTAwP8mySaXSw=
-		</data>
 		<key>public/cgu-congrats.page-C3BU2OM4.js</key>
 		<data>
 		LsZ7KG1l5a7k0Ib2Ym8EAl4uX+s=
@@ -1779,10 +1775,6 @@
 		<key>public/confetti.component.css.map</key>
 		<data>
 		DhVhaF4i7poPeFnLPsHjwsPoVsU=
-		</data>
-		<key>public/config.xml</key>
-		<data>
-		bCZGUCvjDKt2Qr2EGwXDYJ/P+fI=
 		</data>
 		<key>public/confirm-code.page-Q3GUVASN.js</key>
 		<data>
@@ -2548,7 +2540,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ds/IQpa+sYiJaOT5t9w/IkBhwqSc1PQq5z3scoAzmBc=
+			4P4UNcNWEBT9ShEu+0yeshcMmQV1ywqpFCwz5raSvw4=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_EcoveloSDK.framework/_CodeSignature/CodeResources</key>
@@ -2569,7 +2561,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/lK2DPpWyje/N7WxXAVBHNoZ0/XS4HZ8udgF2Yj5qyo=
+			nPiqPMM2fD809y1w+fizljl3MNdbHYVnQPqCl52/aoU=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -2583,7 +2575,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rRHp7l7sswQTgxaWm99FYTDcxCaChFdxlb5UfpifxbQ=
+			etNACIBkHl4ddgY4dpmB0xqMnYcKEpamVKm7Cdus1is=
 			</data>
 		</dict>
 		<key>Modules/EcoveloSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
@@ -2597,7 +2589,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MgWLasv9rpvBHL2sj4w2P9HApVSpXVo/qlP0bzeWiJQ=
+			P1KGlOOQ2+GE4G6Mhip2vwtzpEF3vx0pDXIakxzwUcA=
 			</data>
 		</dict>
 		<key>bikebell.mp3</key>
@@ -4840,13 +4832,6 @@
 			v863WcjwWBGNsLFxt60l2cdMY3hatpOrjEqAY2TjNkM=
 			</data>
 		</dict>
-		<key>public/capacitor.config.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			g78AJ2f6XvZ07V+OC+fsmUQrT/WAuBN7cXztWyyYvKE=
-			</data>
-		</dict>
 		<key>public/cgu-congrats.page-C3BU2OM4.js</key>
 		<dict>
 			<key>hash2</key>
@@ -5594,13 +5579,6 @@
 			<key>hash2</key>
 			<data>
 			TaEWKodGV9zoJmXudm/2DFalHg+l+ALFBPizK7n4hpk=
-			</data>
-		</dict>
-		<key>public/config.xml</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6dzaST5mPFxNuePLO9loR3pukKqIQLy7pA1y7VS3Z84=
 			</data>
 		</dict>
 		<key>public/confirm-code.page-Q3GUVASN.js</key>

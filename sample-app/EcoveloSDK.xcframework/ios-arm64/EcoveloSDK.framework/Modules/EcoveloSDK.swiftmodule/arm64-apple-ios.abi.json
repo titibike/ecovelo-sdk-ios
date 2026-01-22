@@ -194,14 +194,21 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/enzo\/Desktop\/DEV\/CITYWAY\/EcoveloSDK\/EcoveloSDK\/AppDelegate.swift",
+      "filePath": "\/Users\/enzo\/Desktop\/DEV\/SDK-IOS\/EcoveloSDK\/EcoveloSDK\/AppDelegate.swift",
       "kind": "Dictionary",
       "offset": 2201,
       "length": 3,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/enzo\/Library\/Developer\/Xcode\/DerivedData\/EcoveloSDK-dqbttwbkuoipfbalnkswwrxtutbn\/Build\/Intermediates.noindex\/ArchiveIntermediates\/EcoveloSDK\/IntermediateBuildFilesPath\/EcoveloSDK.build\/Release-iphoneos\/EcoveloSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/enzo\/Desktop\/DEV\/SDK-IOS\/EcoveloSDK\/EcoveloSDK\/EcoveloSDK.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1023,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/enzo\/Library\/Developer\/Xcode\/DerivedData\/EcoveloSDK-gqivoxmzcrfseggyaurmgozdlkzd\/Build\/Intermediates.noindex\/ArchiveIntermediates\/EcoveloSDK\/IntermediateBuildFilesPath\/EcoveloSDK.build\/Release-iphoneos\/EcoveloSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 771,
       "length": 8,

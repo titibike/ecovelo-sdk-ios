@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C6BA739C2F225FCD00CE7201 /* Pods_sample_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB003E1BD37401BA0B454AB3 /* Pods_sample_app.framework */; };
 		C6BA739D2F225FCD00CE7201 /* Pods_sample_app.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB003E1BD37401BA0B454AB3 /* Pods_sample_app.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C6BA73A02F22606B00CE7201 /* EcoveloSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BA739E2F22606400CE7201 /* EcoveloSDK.xcframework */; };
-		C6BA73A12F22606B00CE7201 /* EcoveloSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6BA739E2F22606400CE7201 /* EcoveloSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C6DBC9442F2287C900D81362 /* EcoveloSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DBC9422F2287C300D81362 /* EcoveloSDK.xcframework */; };
+		C6DBC9452F2287C900D81362 /* EcoveloSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6DBC9422F2287C300D81362 /* EcoveloSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,7 +20,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C6BA73A12F22606B00CE7201 /* EcoveloSDK.xcframework in Embed Frameworks */,
+				C6DBC9452F2287C900D81362 /* EcoveloSDK.xcframework in Embed Frameworks */,
 				C6BA739D2F225FCD00CE7201 /* Pods_sample_app.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -32,15 +32,13 @@
 		5A1068342426E4F839B7D516 /* Pods-sample-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sample-app.debug.xcconfig"; path = "Target Support Files/Pods-sample-app/Pods-sample-app.debug.xcconfig"; sourceTree = "<group>"; };
 		BB003E1BD37401BA0B454AB3 /* Pods_sample_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sample_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66EADBE2F15512600F6E27E /* sample-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sample-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6BA739E2F22606400CE7201 /* EcoveloSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = EcoveloSDK.xcframework; sourceTree = "<group>"; };
+		C6DBC9422F2287C300D81362 /* EcoveloSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = EcoveloSDK.xcframework; sourceTree = "<group>"; };
 		F3E27E3BFB8C2D325518ADB2 /* Pods-sample-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sample-app.release.xcconfig"; path = "Target Support Files/Pods-sample-app/Pods-sample-app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C647A4442F225E9300B07559 /* sample-app */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = "sample-app";
 			sourceTree = "<group>";
 		};
@@ -51,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6BA73A02F22606B00CE7201 /* EcoveloSDK.xcframework in Frameworks */,
+				C6DBC9442F2287C900D81362 /* EcoveloSDK.xcframework in Frameworks */,
 				C6BA739C2F225FCD00CE7201 /* Pods_sample_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,7 +81,7 @@
 				C66EADBF2F15512600F6E27E /* Products */,
 				04D8901256417C0CF6B25D17 /* Pods */,
 				3BAC8AE64ABDF281C47BF689 /* Frameworks */,
-				C6BA739E2F22606400CE7201 /* EcoveloSDK.xcframework */,
+				C6DBC9422F2287C300D81362 /* EcoveloSDK.xcframework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,8 +171,12 @@
 			);
 			inputFileListPaths = (
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
