@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# CocoaPods
+**/Pods/
+**/Podfile.lock
+
+# Xcode build
+**/build/
+**/DerivedData/
+**/*.xcuserstate
+**/xcuserdata/
+
+# Workspaces (souvent générés)
+**/*.xcworkspace/
+
+# Carthage / SPM
+Carthage/
+.build/
+.swiftpm/
+
+# Archives / output
+**/*.xcarchive/
+# Xcode user state (local only)
+**/*.xcuserstate
+**/xcuserdata/
