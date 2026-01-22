@@ -1,6 +1,0 @@
-framework module CapawesomeCapacitorLiveUpdate {
-  umbrella header "CapawesomeCapacitorLiveUpdate-umbrella.h"
-
-  export *
-  module * { export * }
-}
