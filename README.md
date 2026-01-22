@@ -47,46 +47,13 @@ Pour le guide intégrateur complet (distribution, checklist), voir `docs/ios/INT
 ### 🔐 Authentification SSO (token IAM Cityway)
 
 Conformément au contrat iOS, **le SDK ne fait pas le login SSO**.  
-L’app hôte :
-
-- gère OIDC/SSO (ex: `mon-compte.bzh`)
-- stocke / rafraîchit ses tokens
-- fournit au SDK un **token IAM Cityway standardisé** au moment de l’initialisation/lancement
-
-Voir `docs/ios/AUTH_SSO.md`.
+L’app hôte gère OIDC/SSO (ex: `mon-compte.bzh`), et peut fournir un contexte à la webapp via `payload` (voir `docs/ios/AUTH_SSO.md`).
 
 ### 🚀 Utilisation
+Le SDK expose un **point d’entrée unique** qui retourne un `UIViewController` prêt à être présenté.  
+Le SDK embarque l’app web (dossier `public/`) dans le framework et l’affiche via **Capacitor**.
 
-Le SDK expose un **point d’entrée unique** qui présente l’app embarquée (carte, stations, réservation, location, restitution, etc.).  
-Un callback permet à l’hôte de récupérer la fin de parcours (succès / annulation / erreur).
-
-#### Option 1 : SwiftUI (recommandée)
-
-```swift
-import SwiftUI
-import EcoveloSDK
-
-struct ContentView: View {
-  @State private var showSDK = false
-
-  var body: some View {
-    Button("Ouvrir Ecovelo") { showSDK = true }
-      .sheet(isPresented: $showSDK) {
-        EcoveloSDKView(
-          config: EcoveloConfig(
-            iamToken: "<token IAM Cityway>",
-            programId: "breizhgo"
-          )
-        ) { result in
-          showSDK = false
-          print("EcoveloSDK finished:", result)
-        }
-      }
-  }
-}
-```
-
-#### Option 2 : UIKit
+#### UIKit
 
 ```swift
 import UIKit
@@ -94,20 +61,44 @@ import EcoveloSDK
 
 final class HomeViewController: UIViewController {
   func openEcovelo() {
-    let vc = EcoveloSDK.launch(
-      config: EcoveloConfig(iamToken: "<token IAM Cityway>", programId: "breizhgo")
-    ) { result in
-      print("Ecovelo result:", result)
-    }
+    let vc = Ecovelo.makeViewController(
+      initialPath: nil, // ex: "/home"
+      payload: [
+        "source": "host-app",
+        "token": "<token>"
+      ],
+      onClose: { [weak self] in
+        self?.dismiss(animated: true)
+      }
+    )
 
     present(vc, animated: true)
   }
 }
 ```
 
+#### SwiftUI (wrapper)
+
+```swift
+import SwiftUI
+import EcoveloSDK
+
+struct EcoveloSDKWrapper: UIViewControllerRepresentable {
+  let initialPath: String?
+  let payload: [String: Any]?
+  let onClose: (() -> Void)?
+
+  func makeUIViewController(context: Context) -> UIViewController {
+    Ecovelo.makeViewController(initialPath: initialPath, payload: payload, onClose: onClose)
+  }
+
+  func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}
+```
+
 ### 🎨 Personnalisation
 
-La surface de personnalisation côté iOS est volontairement **réduite** (ex: `programId`, thème simple).  
+La surface de personnalisation côté iOS est volontairement **réduite** (ex: `initialPath`, `payload`).  
 Voir `docs/ios/CUSTOMIZATION.md`.
 
 ### 📋 Prérequis
@@ -125,13 +116,12 @@ Sur iOS, les permissions sont déclarées dans l’app hôte (`Info.plist`). Sel
 
 - `NSCameraUsageDescription` (scan QR / caméra)
 - `NSLocationWhenInUseUsageDescription` (carte / géolocalisation)
-- `NSBluetoothAlwaysUsageDescription` (BLE si applicable)
+- `NSLocationAlwaysAndWhenInUseUsageDescription` (suivi trajet en arrière-plan si activé)
+- `NSPhotoLibraryUsageDescription` / `NSPhotoLibraryAddUsageDescription` (upload/sauvegarde photos)
+- `NSUserTrackingUsageDescription` (ATT si activé)
 
 Voir le détail dans `docs/ios/INTEGRATION.md`.
 
-#### Conflits potentiels
-
-Si votre application hôte embarque déjà Capacitor ou des plugins identiques, il peut exister des conflits de versions/symboles. Dans ce cas, privilégiez une livraison “bundle” cohérente (SDK + dépendances) ou contactez l’équipe SDK.
 
 ### 📚 Documentation
 

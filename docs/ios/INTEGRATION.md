@@ -1,118 +1,133 @@
-# Guide d’intégration SDK Ecovelo iOS (conforme DOC01010)
+# Guide d’intégration SDK Ecovelo iOS (aligné avec le fonctionnement actuel)
 
-Ce document fournit un guide d’intégration iOS répondant aux exigences **DOC01010** :
+Ce document décrit l’intégration du SDK iOS Ecovelo dans ce repository :
 
-- SDK iOS livré comme **conteneur autonome**
-- **Point d’entrée unique** exposé par le SDK (UIKit + option SwiftUI)
-- **Token IAM Cityway** fourni par l’app hôte au moment de l’initialisation
-- **Callback de fin de parcours** (succès / annulation / erreur)
-- **Listing des dépendances** et **listing des permissions** nécessaires
+- SDK livré sous forme de **XCFramework**
+- UI présentée via un **point d’entrée unique** côté hôte (`UIViewController`)
+- Webapp embarquée dans le SDK (dossier `public/`) affichée via **Capacitor**
+- Liste des **dépendances CocoaPods**, des **permissions iOS** et des éléments de config à prévoir
 
 ## Prérequis
 
 - Xcode 15+ (recommandé)
 - Swift 5.x
-- **iOS 16 minimum**
+- iOS 16+ (min)
 
-## SDK & Distribution
+## 1) Ajouter `EcoveloSDK.xcframework` dans l’app hôte
 
-Le SDK iOS doit être distribuable via l’un des formats suivants :
-
-- **XCFramework**
-- **Swift Package Manager (SPM)**
-- **CocoaPods**
-
-> Recommandation intégrateur (Cityway) : préférer une distribution “plug-and-play” (XCFramework/SPM) avec une procédure d’intégration claire et un listing des dépendances.
-
-## Intégration (Xcode)
-
-### Via XCFramework (approche préférée)
-
-1. Ajouter le `*.xcframework` au projet (ex: dossier `ThirdParty/Ecovelo/`).
-2. Dans la target iOS de l’app hôte :
+1. Copier `EcoveloSDK.xcframework` dans votre repository (ex: `ThirdParty/Ecovelo/`).
+2. Dans Xcode (target de l’app hôte) :
    - **Frameworks, Libraries, and Embedded Content**
-   - Ajouter le framework du SDK
-   - Configurer l’embed (généralement **Embed & Sign**).
-3. Vérifier la compatibilité iOS : **>= 16.0**.
+   - Ajouter `EcoveloSDK.xcframework`
+   - Régler sur **Embed & Sign**
+
+## 2) Ajouter les pods requis (CocoaPods)
+
+Le framework `EcoveloSDK.xcframework` s’appuie sur **Capacitor** et plusieurs plugins natifs : l’app hôte doit donc linker ces dépendances.
+
+> À date (jan. 2026), les pods sont référencés en **local** (via `:path`) comme dans `sample-app/Podfile`.  
+> Ils seront publiés ensuite (GitHub/Podspec) pour éviter les chemins locaux.
+
+### Pods minimum (référence: `sample-app/Podfile`)
+
+- `Alamofire` (5.10.2)
+- `Capacitor`, `CapacitorCordova`
+- Plugins Capacitor / Communautaires :
+  - `CapacitorCommunityNativeAudio`
+  - `CapacitorCommunityStripe`
+  - `CapacitorMlkitBarcodeScanning`
+  - `CapacitorApp`
+  - `CapacitorAppLauncher`
+  - `CapacitorBrowser`
+  - `CapacitorCamera`
+  - `CapacitorFilesystem`
+  - `CapacitorGeolocation`
+  - `CapacitorHaptics`
+  - `CapacitorKeyboard`
+  - `CapacitorPreferences`
+  - `CapacitorPushNotifications`
+  - `CapacitorScreenOrientation`
+  - `CapacitorStatusBar`
+  - `CapawesomeCapacitorLiveUpdate`
+  - `SentryCapacitor`
+  - `CapacitorNativeSettings`
+  - `CapacitorPluginAppTrackingTransparency`
+- Firebase (Push Notifications / FCM) :
+  - `Firebase/Core`
+  - `Firebase/Messaging`
+  - `Firebase/Installations`
+  - (dépendances transitives visibles dans le sample) `GoogleDataTransport`, `GoogleUtilities`, `nanopb`
 
 
-## Point d’entrée unique (UIKit / SwiftUI)
+## 3) Ajouter les permissions iOS (Info.plist de l’app hôte)
 
-Le SDK doit exposer un **point d’entrée unique** :
+Clés actuellement utilisées dans le sample (via `INFOPLIST_KEY_*` dans `sample-app.xcodeproj`) :
 
-- **UIKit** : une API retournant un `UIViewController` prêt à être présenté.
-- **SwiftUI** : soit une `View` fournie, soit un wrapper `UIViewControllerRepresentable` documenté.
+| Fonction | Clé `Info.plist` |
+|---|---|
+| Caméra | `NSCameraUsageDescription` |
+| Localisation | `NSLocationWhenInUseUsageDescription` |
+| Localisation (background) | `NSLocationAlwaysAndWhenInUseUsageDescription` |
+| Galerie (lecture) | `NSPhotoLibraryUsageDescription` |
+| Galerie (écriture) | `NSPhotoLibraryAddUsageDescription` |
+| Tracking (ATT) | `NSUserTrackingUsageDescription` |
 
-Exemple indicatif (UIKit) :
+## 4) Capabilities / Entitlements (Xcode)
+
+Certains éléments fournis dans des exemples “Info.plist” sont en réalité des **entitlements** (Capabilities Xcode) :
+
+- `aps-environment` (Push Notifications)
+- `com.apple.developer.associated-domains` (Universal Links)
+- `com.apple.developer.in-app-payments` (Apple Pay merchant ids)
+
+Exemple dans le repo : `EcoveloSDK/EcoveloSDK/App.entitlements`.
+
+## 5) AppDelegate (Push / Universal Links / OpenURL)
+
+Si vous utilisez les plugins Capacitor `PushNotifications` / `App` / deep links, vous devez forwarder certains évènements iOS (openURL, continue userActivity, callbacks APNS/FCM).
+
+Référence à recopier/adapter dans votre app hôte : `EcoveloSDK/EcoveloSDK/AppDelegate.swift`.
+
+## 6) `capacitor.config.json` (à adapter aux specs de l’app hôte)
+
+Le SDK embarque un `public/capacitor.config.json` (dans les assets web).  
+Les valeurs suivantes sont typiquement **spécifiques à l’application hôte** et doivent être renseignées dans le build livré :
+
+- `appId`, `appName`
+- `plugins.Stripe.publishableKey`
+- `plugins.Stripe.merchantIdentifier`
+- `plugins.LiveUpdate.appId` / `defaultChannel`
+- `server.iosScheme` (ex: `ecovelo` ou `capacitor`)
+
+Exemple de structure : `sample-app/sample-app/capacitor.config.json`.
+
+## 7) Utilisation (point d’entrée unique)
+
+### UIKit
 
 ```swift
 import UIKit
 import EcoveloSDK
 
 final class HomeViewController: UIViewController {
-  func openEcovelo(iamToken: String) {
-    let config = EcoveloSDKConfig(
-      iamToken: iamToken,
-      locale: Locale.current // compatible multilingue
+  func openEcovelo() {
+    let vc = Ecovelo.makeViewController(
+      initialPath: nil,
+      payload: [
+        "source": "host-app",
+        "token": "<token>"
+      ],
+      onClose: { [weak self] in
+        self?.dismiss(animated: true)
+      }
     )
-
-    let vc = EcoveloSDK.makeViewController(config: config) { result in
-      // success / cancelled / error
-      print("Ecovelo finished:", result)
-    }
 
     present(vc, animated: true)
   }
 }
 ```
 
-> Les noms (`EcoveloSDKConfig`, `makeViewController`) sont **indicatifs** : l’essentiel est de respecter le contrat (VC/SwiftUI + config + callback).
+### SwiftUI (wrapper)
 
-## Token IAM Cityway (contexte d’initialisation)
+Voir `sample-app/sample-app/ContentView.swift`.
 
-Conformément au DOC01010, l’application hôte fournit au SDK, au lancement :
-
-- le **token IAM Cityway standardisé** (valide, déjà authentifié)
-- les paramètres de contexte nécessaires (ex: territoire/programme, locale)
-
-La gestion SSO/OIDC et le refresh token restent côté app hôte (voir `docs/ios/AUTH_SSO.md`).
-
-## Callback de fin de parcours
-
-Le SDK doit permettre à l’hôte de recevoir un résultat de fin de parcours :
-
-- **succès**
-- **annulation**
-- **erreur** (avec message/cause)
-
-Le callback doit permettre à l’hôte d’actualiser son UI et ses parcours hors-SDK.
-
-## Listing des dépendances tierces
-
-EN COURS
-
-## Listing des permissions requises (iOS)
-
-Sur iOS, les permissions sont à renseigner dans le `Info.plist` **de l’app hôte**.  
-Voici le listing des clés pertinentes et un exemple de valeur pour chaque permission :
-
-| Fonction        | Clé `Info.plist`                        | Exemple d’usage                                           |
-|-----------------|-----------------------------------------|-----------------------------------------------------------|
-| Caméra          | `NSCameraUsageDescription`              | Scan de documents, photo véhicule                         |
-| Localisation    | `NSLocationWhenInUseUsageDescription`   | Carte, recherche de trajets                               |
-| Localisation (bg)| `NSLocationAlwaysAndWhenInUseUsageDescription` | Suivi de trajet même en arrière-plan                |
-| Galerie         | `NSPhotoLibraryUsageDescription`        | Import de photos depuis la galerie                        |
-| Sauvegarde photo| `NSPhotoLibraryAddUsageDescription`     | Enregistrement de photos dans la galerie                  |
-| Notifications   | `NSUserNotificationsUsageDescription`   | Alerter l’utilisateur en fin de trajet                    |
-| Bluetooth       | `NSBluetoothAlwaysUsageDescription`     | Communication vélo/accessoires BLE                        |
-| Tracking        | `NSUserTrackingUsageDescription`        | Debug & amélioration de l’app                             |
-
-## Checklist intégration (DOC01010)
-
-- [ ] Format de distribution iOS : **XCFramework / SPM / CocoaPods**
-- [ ] Compatibilité iOS : **>= 16.0**
-- [ ] Point d’entrée unique : **UIViewController** (et SwiftUI si applicable)
-- [ ] Initialisation : **token IAM Cityway** + contexte + multilingue
-- [ ] Callback : **success / cancelled / error**
-- [ ] Listing dépendances fourni
-- [ ] Listing permissions fourni

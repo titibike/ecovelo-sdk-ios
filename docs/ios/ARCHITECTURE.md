@@ -11,8 +11,8 @@ Cette approche répond aux exigences **DOC01010** :
   - la gestion des états et erreurs du parcours
 - **Côté application hôte (Cityway)** :
   - lancer un **point d’entrée unique** (SwiftUI ou ViewController)
-  - fournir le **token IAM Cityway standardisé** au moment de l’initialisation
-  - recevoir un **callback de fin de parcours** (succès / annulation / erreur)
+  - (optionnel) fournir un **contexte** à l’app web via `payload`
+  - gérer la fermeture via le callback `onClose` (ou laisser le SDK dismiss si présenté en modal)
 
 ## Diagramme d’architecture
 
@@ -33,21 +33,16 @@ Cette approche répond aux exigences **DOC01010** :
 │  │  ┌─────────────────────────────────────────────────────────────────┐  │   │
 │  │  │                       PUBLIC API LAYER                          │  │   │
 │  │  │                                                                 │  │   │
-│  │  │  EcoveloSDK                                                     │  │   │
-│  │  │  - launch(config) -> UIViewController                            │  │   │
-│  │  │  - launch(config, onFinish) -> UIViewController                  │  │   │
-│  │  │                                                                 │  │   │
-│  │  │  EcoveloSDKView (SwiftUI)                                        │  │   │
-│  │  │  - UIViewControllerRepresentable                                 │  │   │
+│  │  │  Ecovelo (public)                                                │  │   │
+│  │  │  - makeViewController(initialPath:payload:onClose:) -> UIViewController │  │
 │  │  └─────────────────────────────────────────────────────────────────┘  │   │
 │  │                               │                                        │   │
 │  │  ┌─────────────────────────────────────────────────────────────────┐  │   │
 │  │  │                       BRIDGE / CONTENEUR                        │  │   │
 │  │  │                                                                 │  │   │
-│  │  │  EcoveloViewController                                          │  │   │
-│  │  │  - héberge CAPBridgeViewController (Capacitor)                   │  │   │
-│  │  │  - injecte iamToken (+ programId, thème) vers la webapp          │  │   │
-│  │  │  - reçoit le finish via URL scheme ecovelo-sdk://finish          │  │   │
+│  │  │  EcoveloHostViewController                                      │  │   │
+│  │  │  - héberge EcoveloBridgeViewController (Capacitor)               │  │   │
+│  │  │  - gère le bouton Close + callback `onClose`                     │  │   │
 │  │  └─────────────────────────────────────────────────────────────────┘  │   │
 │  │                               │                                        │   │
 │  │  ┌─────────────────────────────────────────────────────────────────┐  │   │
@@ -76,39 +71,25 @@ Cette approche répond aux exigences **DOC01010** :
 
 | Élément | Responsabilité |
 |--------|-----------------|
-| `EcoveloSDK` | Point d’entrée UIKit : retourne un `UIViewController` prêt à être présenté |
-| `EcoveloSDKView` | Point d’entrée SwiftUI : wrapper `UIViewControllerRepresentable` |
-| `EcoveloConfig` | Configuration (token IAM, programId, thème) |
-| `EcoveloSDK.Result` | Résultat fin de parcours: `success` / `cancelled` / `error(message:)` |
+| `Ecovelo` | Point d’entrée UIKit : retourne un `UIViewController` prêt à être présenté (`makeViewController`) |
+| (host) `UIViewControllerRepresentable` | Wrapper SwiftUI (voir `sample-app/sample-app/ContentView.swift`) |
 
 ### 2) Conteneur Capacitor
 
-Le conteneur est assuré par `EcoveloViewController` :
+Le conteneur est assuré par :
 
-- En mode **Capacitor** (recommandé): embed d’un `CAPBridgeViewController` via `EcoveloBridgeViewController`
-- Fallback **WKWebView** si Capacitor n’est pas présent (diagnostic / compat)
+- `EcoveloHostViewController` : conteneur full-screen + bouton Close
+- `EcoveloBridgeViewController` : sous-classe de `CAPBridgeViewController` (Capacitor)
 
-### 3) Contrat de configuration (token / contexte)
 
-Pour rendre le token accessible à la webapp :
+### 3) Configuration runtime (contexte applicatif)
 
-- **Injection via `UserDefaults`** (clé `ecovelo_iam_token`)
-- Optionnellement, **injection JS** si la webapp expose `window.EcoveloSDK.setIAMToken(...)`
-
-> ⚠️ Sur iOS, `UserDefaults` est persistant. L’app hôte doit décider quand **écraser** / **nettoyer** ces valeurs (ex: logout).
-
-### 4) Contrat de “fin de parcours”
-
-Le SDK iOS expose un callback `onFinish` côté natif.  
-Le conteneur intercepte une navigation de la webapp vers :
-
-`ecovelo-sdk://finish?status=success|cancelled|error&message=...`
-
-Puis appelle `onFinish` avec le bon `EcoveloSDK.Result` et ferme l’UI si elle a été présentée en modal.
+L’API publique accepte un dictionnaire `payload: [String: Any]?`.  
+Ce payload est actuellement prévu pour fournir du contexte à la webapp (ex: token), mais l’injection côté web dépend de l’implémentation Capacitor/web (à documenter/standardiser côté produit).
 
 ## Limites iOS spécifiques (à connaître)
 
-- **Délégation des permissions**: sur iOS, les permissions sont pilotées par l’application hôte via `Info.plist` (voir `docs/ios/INTEGRATION.md`).
-- **Dépendances plugins Capacitor**: la présence effective des plugins côté iOS dépend des frameworks intégrés (CocoaPods/XCFramework bundle). Un plugin manquant produit typiquement un `UNIMPLEMENTED` côté JS.
-- **Mises à jour de token**: le SDK est conçu pour recevoir le token à l’initialisation. Les stratégies de “refresh” doivent être côté hôte (voir `docs/ios/AUTH_SSO.md`).
+- **Délégation des permissions** : sur iOS, les permissions sont pilotées par l’application hôte via `Info.plist` (voir `docs/ios/INTEGRATION.md`).
+- **Dépendances plugins Capacitor** : la présence effective des plugins côté iOS dépend des frameworks intégrés (CocoaPods). Un plugin manquant produit typiquement un `UNIMPLEMENTED` côté JS.
+- **Config spécifique hôte** : certaines valeurs (Stripe merchant id, LiveUpdate, etc.) vivent dans `capacitor.config.json` (voir `docs/ios/INTEGRATION.md`).
 
