@@ -26,10 +26,18 @@ Le SDK embarque un runtime **Capacitor iOS** et les **assets** de la webapp, ce 
 Pour le détail, voir `docs/ios/ARCHITECTURE.md`.
 
 ### 📦 Installation (XCFramework)
-
-Le dépôt fournit un artefact prêt à intégrer :
-
-- `build/EcoveloSDK.xcframework`
+ 
+ Se mettre à la racine du dossier EcoveloSDK et 
+pod install && xcodebuild archive \
+  -workspace EcoveloSDK.xcworkspace \
+  -scheme EcoveloSDK \
+  -configuration Release \
+  -destination "generic/platform=iOS" \
+  -archivePath "./build/EcoveloSDK-iOS" \
+  SKIP_INSTALL=NO \
+  BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild -create-xcframework \
+  -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
+  -output "./build/EcoveloSDK.xcframework"
 
 #### Intégration dans l’app hôte (Xcode)
 
@@ -143,13 +151,6 @@ rm -rf build && xcodebuild archive \
   -configuration Release \
   -destination "generic/platform=iOS" \
   -archivePath "./build/EcoveloSDK-iOS" \
-  SKIP_INSTALL=NO \
-  BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild archive \
-  -workspace EcoveloSDK.xcworkspace \
-  -scheme EcoveloSDK \
-  -configuration Release \
-  -destination "generic/platform=iOS Simulator" \
-  -archivePath "./build/EcoveloSDK-Sim" \
   SKIP_INSTALL=NO \
   BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild -create-xcframework \
   -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
