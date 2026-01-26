@@ -16,7 +16,8 @@ Ce document décrit l’intégration du SDK iOS Ecovelo dans ce repository :
 ## 1) Générer et ajouter `EcoveloSDK.xcframework` dans l’app hôte
 
 1. Générer `EcoveloSDK.xcframework`  
-   Depuis la racine du dossier `EcoveloSDK/`, exécuter :
+   Cloner le repository
+   Aller à la la racine du dossier `EcoveloSDK/`, exécuter :
 
 ```bash
 pod install && xcodebuild archive \
@@ -42,8 +43,8 @@ pod install && xcodebuild archive \
 
 Le framework `EcoveloSDK.xcframework` s’appuie sur **Capacitor** et plusieurs plugins natifs : l’app hôte doit donc linker ces dépendances.
 
-> À date (jan. 2026), les pods sont référencés en **local** (via `:path`) comme dans `sample-app/Podfile`.  
-> Ils seront publiés ensuite (GitHub/Podspec) pour éviter les chemins locaux.
+> À date (jan. 2026), les pods sont référencés en **local** (via `:path`) comme dans `sample-app/Podfile`, ils sont présents dans le repo sous le dossier `ios-deps/`.  
+
 
 ### Pods minimum (référence: `sample-app/Podfile`)
 
