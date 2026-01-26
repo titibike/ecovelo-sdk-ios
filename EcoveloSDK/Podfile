@@ -1,35 +1,34 @@
 platform :ios, '16.0'
 use_frameworks!
 
-# mets ici le chemin absolu vers ton app source (qui contient node_modules)
-IONIC_ROOT = '/Users/enzo/Desktop/DEV/JAVASCRIPT/Nouvelle-app/FINAL/appli-usager-v3'
-require_relative "#{IONIC_ROOT}/node_modules/@capacitor/ios/scripts/pods_helpers"
+IOS_DEPS = File.expand_path('../ios-deps', __dir__)
+require_relative "#{IOS_DEPS}/@capacitor/ios/scripts/pods_helpers"
 
 install! 'cocoapods', :disable_input_output_paths => true
 
 target 'EcoveloSDK' do
   pod 'Alamofire', '5.10.2'
-  pod 'Capacitor', :path => "#{IONIC_ROOT}/node_modules/@capacitor/ios"
-  pod 'CapacitorCordova', :path => "#{IONIC_ROOT}/node_modules/@capacitor/ios"  
-  pod 'CapacitorCommunityNativeAudio', :path => "#{IONIC_ROOT}/node_modules/@capacitor-community/native-audio"
-  pod 'CapacitorCommunityStripe', :path => "#{IONIC_ROOT}/node_modules/@capacitor-community/stripe"
-  pod 'CapacitorMlkitBarcodeScanning', :path => "#{IONIC_ROOT}/node_modules/@capacitor-mlkit/barcode-scanning"
-  pod 'CapacitorApp', :path => "#{IONIC_ROOT}/node_modules/@capacitor/app"
-  pod 'CapacitorAppLauncher', :path => "#{IONIC_ROOT}/node_modules/@capacitor/app-launcher"
-  pod 'CapacitorBrowser', :path => "#{IONIC_ROOT}/node_modules/@capacitor/browser"
-  pod 'CapacitorCamera', :path => "#{IONIC_ROOT}/node_modules/@capacitor/camera"
-  pod 'CapacitorFilesystem', :path => "#{IONIC_ROOT}/node_modules/@capacitor/filesystem"
-  pod 'CapacitorGeolocation', :path => "#{IONIC_ROOT}/node_modules/@capacitor/geolocation"
-  pod 'CapacitorHaptics', :path => "#{IONIC_ROOT}/node_modules/@capacitor/haptics"
-  pod 'CapacitorKeyboard', :path => "#{IONIC_ROOT}/node_modules/@capacitor/keyboard"
-  pod 'CapacitorPreferences', :path => "#{IONIC_ROOT}/node_modules/@capacitor/preferences"
-  pod 'CapacitorPushNotifications', :path => "#{IONIC_ROOT}/node_modules/@capacitor/push-notifications"
-  pod 'CapacitorScreenOrientation', :path => "#{IONIC_ROOT}/node_modules/@capacitor/screen-orientation"
-  pod 'CapacitorStatusBar', :path => "#{IONIC_ROOT}/node_modules/@capacitor/status-bar"
-  pod 'CapawesomeCapacitorLiveUpdate', :path => "#{IONIC_ROOT}/node_modules/@capawesome/capacitor-live-update"
-  pod 'SentryCapacitor', :path => "#{IONIC_ROOT}/node_modules/@sentry/capacitor"
-  pod 'CapacitorNativeSettings', :path => "#{IONIC_ROOT}/node_modules/capacitor-native-settings"
-  pod 'CapacitorPluginAppTrackingTransparency', :path => "#{IONIC_ROOT}/node_modules/capacitor-plugin-app-tracking-transparency"
+  pod 'Capacitor', :path => "#{IOS_DEPS}/@capacitor/ios"
+  pod 'CapacitorCordova', :path => "#{IOS_DEPS}/@capacitor/ios"  
+  pod 'CapacitorCommunityNativeAudio', :path => "#{IOS_DEPS}/@capacitor-community/native-audio"
+  pod 'CapacitorCommunityStripe', :path => "#{IOS_DEPS}/@capacitor-community/stripe"
+  pod 'CapacitorMlkitBarcodeScanning', :path => "#{IOS_DEPS}/@capacitor-mlkit/barcode-scanning"
+  pod 'CapacitorApp', :path => "#{IOS_DEPS}/@capacitor/app"
+  pod 'CapacitorAppLauncher', :path => "#{IOS_DEPS}/@capacitor/app-launcher"
+  pod 'CapacitorBrowser', :path => "#{IOS_DEPS}/@capacitor/browser"
+  pod 'CapacitorCamera', :path => "#{IOS_DEPS}/@capacitor/camera"
+  pod 'CapacitorFilesystem', :path => "#{IOS_DEPS}/@capacitor/filesystem"
+  pod 'CapacitorGeolocation', :path => "#{IOS_DEPS}/@capacitor/geolocation"
+  pod 'CapacitorHaptics', :path => "#{IOS_DEPS}/@capacitor/haptics"
+  pod 'CapacitorKeyboard', :path => "#{IOS_DEPS}/@capacitor/keyboard"
+  pod 'CapacitorPreferences', :path => "#{IOS_DEPS}/@capacitor/preferences"
+  pod 'CapacitorPushNotifications', :path => "#{IOS_DEPS}/@capacitor/push-notifications"
+  pod 'CapacitorScreenOrientation', :path => "#{IOS_DEPS}/@capacitor/screen-orientation"
+  pod 'CapacitorStatusBar', :path => "#{IOS_DEPS}/@capacitor/status-bar"
+  pod 'CapawesomeCapacitorLiveUpdate', :path => "#{IOS_DEPS}/@capawesome/capacitor-live-update"
+  pod 'SentryCapacitor', :path => "#{IOS_DEPS}/@sentry/capacitor"
+  pod 'CapacitorNativeSettings', :path => "#{IOS_DEPS}/capacitor-native-settings"
+  pod 'CapacitorPluginAppTrackingTransparency', :path => "#{IOS_DEPS}/capacitor-plugin-app-tracking-transparency"
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Installations'

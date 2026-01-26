@@ -28,18 +28,6 @@
 		<data>
 		XChaGCu9endqpT3P08g+dq6044k=
 		</data>
-		<key>Frameworks/Pods_EcoveloSDK.framework/Info.plist</key>
-		<data>
-		+eiFgpq1Vseo+Hp0nuBaMDq1YKA=
-		</data>
-		<key>Frameworks/Pods_EcoveloSDK.framework/Pods_EcoveloSDK</key>
-		<data>
-		ujHgk+PYMaM1X+ZwlwmzoHDUgu0=
-		</data>
-		<key>Frameworks/Pods_EcoveloSDK.framework/_CodeSignature/CodeResources</key>
-		<data>
-		ibwcJF/ud/AjjG4YSmh+QEqN9AM=
-		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
 		CmEFyuWjDCN0qVJxywueG6TJPTE=
@@ -2527,27 +2515,6 @@
 			<key>hash2</key>
 			<data>
 			+dQTGVrgiXJVSSV9zz0Rr55sQmoSn8A3a3e6kzegAxI=
-			</data>
-		</dict>
-		<key>Frameworks/Pods_EcoveloSDK.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			th+jOMsPuvRNhHFApmDhnNBnYaIbLaR9mbWofcWyI+A=
-			</data>
-		</dict>
-		<key>Frameworks/Pods_EcoveloSDK.framework/Pods_EcoveloSDK</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			4P4UNcNWEBT9ShEu+0yeshcMmQV1ywqpFCwz5raSvw4=
-			</data>
-		</dict>
-		<key>Frameworks/Pods_EcoveloSDK.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Uo37bRV9GC+lkczZeQThyaojKMT+/iQ+DtVXdcuay/Q=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>

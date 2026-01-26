@@ -8,22 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C6DBC9372F22859200D81362 /* Pods_EcoveloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFBE6D97EA9FDBC7336052AE /* Pods_EcoveloSDK.framework */; };
-		C6DBC9382F22859200D81362 /* Pods_EcoveloSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFBE6D97EA9FDBC7336052AE /* Pods_EcoveloSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C6DBC9392F22859200D81362 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C6DBC9382F22859200D81362 /* Pods_EcoveloSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6935DDDF965D592101C924CD /* Pods-EcoveloSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoveloSDK.release.xcconfig"; path = "Target Support Files/Pods-EcoveloSDK/Pods-EcoveloSDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,7 +97,6 @@
 				C6DBC8FB2F2284A500D81362 /* Sources */,
 				C6DBC8FC2F2284A500D81362 /* Frameworks */,
 				C6DBC8FD2F2284A500D81362 /* Resources */,
-				C6DBC9392F22859200D81362 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

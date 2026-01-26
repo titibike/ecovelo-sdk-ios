@@ -25,3 +25,5 @@ Carthage/
 **/*.xcuserstate
 **/xcuserdata/
 EcoveloSDK/build/
+
+scripts
