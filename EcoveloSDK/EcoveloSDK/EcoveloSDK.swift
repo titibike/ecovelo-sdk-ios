@@ -3,8 +3,8 @@ import Capacitor
 
 public enum Ecovelo {
 
-    /// Retourne un UIViewController prêt à être présenté (SwiftUI fullScreenCover)
-    /// ou pushé (UIKit) pour un rendu plus "intégré".
+    /// Retourne un UIViewController prêt à être présenté en plein écran,
+    /// sans aucune UI native (pas de nav bar, pas de title, pas de bouton).
     public static func makeViewController(
         initialPath: String? = nil,
         payload: [String: Any]? = nil,
@@ -17,10 +17,10 @@ public enum Ecovelo {
             onClose: onClose
         )
 
-        let nav = UINavigationController(rootViewController: root)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.prefersLargeTitles = false
-        return nav
+        // Le host (SwiftUI / UIKit) choisit comment il le présente.
+        // Nous on force juste le fullscreen.
+        root.modalPresentationStyle = .fullScreen
+        return root
     }
 }
 
@@ -30,7 +30,6 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
     private let payload: [String: Any]?
     private let onClose: (() -> Void)?
 
-    // Toggle simple (si tu veux zéro log en prod, mets false)
     private static let enableLogs = true
 
     init(initialPath: String?, payload: [String: Any]?, onClose: (() -> Void)?) {
@@ -39,7 +38,7 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
         self.onClose = onClose
         super.init(nibName: nil, bundle: nil)
 
-        // Sécurité : même si l'hôte présente en sheet sur iPad, on force full screen
+        // Même si l’hôte présente en sheet sur iPad, on force full screen
         modalPresentationStyle = .fullScreen
     }
 
@@ -49,34 +48,12 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .systemBackground
-        title = "Ecovelo"
-
-        // Bouton Fermer natif (plus "intégré" qu'un UIButton overlay)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Fermer",
-            style: .done,
-            target: self,
-            action: #selector(closeTapped)
-        )
+        view.backgroundColor = .systemBackground // ou .systemBackground si tu préfères
+        // ✅ Rien d'autre : pas de title, pas de bouton, pas de nav bar.
     }
 
-    @objc private func closeTapped() {
-        if let onClose {
-            onClose()
-            return
-        }
-
-        // Si pushé dans une nav existante
-        if let nav = navigationController, nav.viewControllers.first != self {
-            nav.popViewController(animated: true)
-            return
-        }
-
-        // Si présenté (ex: SwiftUI fullScreenCover)
-        dismiss(animated: true)
-    }
+    // (Optionnel) cacher la status bar pour un “vrai fullscreen”
+    override var prefersStatusBarHidden: Bool { true }
 
     override func instanceDescriptor() -> InstanceDescriptor {
         let descriptor = super.instanceDescriptor()
@@ -87,7 +64,6 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
                 print("✅ EcoveloSDK: webRoot =", webRoot.lastPathComponent, "(", webRoot.path, ")")
             }
         } else {
-            // 1 seul log clair
             if Self.enableLogs {
                 let frameworkBundle = Bundle(for: EcoveloBridgeViewController.self)
                 let fw = frameworkBundle.bundlePath
@@ -102,9 +78,6 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
             descriptor.appStartPath = trimmed
         }
 
-        // NOTE: payload — à brancher via un plugin / bridge si besoin.
-        // Ici on garde la signature, mais Capacitor n’a pas un champ "payload" natif dans InstanceDescriptor.
-
         return descriptor
     }
 
@@ -112,7 +85,6 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
     private static func resolveWebRootURL() -> URL? {
         let frameworkBundle = Bundle(for: EcoveloBridgeViewController.self)
 
-        // Si tu packs tes assets dans un .bundle séparé (recommandé)
         let resourceBundle: Bundle? = {
             guard let url = frameworkBundle.url(forResource: "EcoveloSDKResources", withExtension: "bundle") else {
                 return nil
@@ -120,7 +92,6 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
             return Bundle(url: url)
         }()
 
-        // Ordre minimal, pas de logs de "not found" pour chaque essai
         let bundlesToTry: [Bundle] = [resourceBundle, frameworkBundle, .main].compactMap { $0 }
 
         for bundle in bundlesToTry {
@@ -128,7 +99,13 @@ final class EcoveloBridgeViewController: CAPBridgeViewController {
                 return indexURL.deletingLastPathComponent()
             }
         }
-
         return nil
+    }
+
+    // Bonus: si tu veux quand même pouvoir fermer depuis la webapp,
+    // tu peux exposer un plugin Capacitor qui appelle onClose/dismiss.
+    func closeFromHostOrWeb() {
+        if let onClose { onClose(); return }
+        dismiss(animated: true)
     }
 }

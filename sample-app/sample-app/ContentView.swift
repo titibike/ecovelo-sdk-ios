@@ -30,31 +30,36 @@ struct EcoveloSDKWrapper: UIViewControllerRepresentable {
 
 // MARK: - ContentView
 struct ContentView: View {
-    @State private var showSDK = false
+@State private var showSDK = false
 
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("sample-app")
-                .font(.title2.bold())
-            Button("Ouvrir Ecovelo SDK") {
-                showSDK = true
-            }
-            .buttonStyle(.borderedProminent)
-        }
-        .padding()
-        .fullScreenCover(isPresented: $showSDK) {
-            EcoveloSDKWrapper(
-                initialPath: nil,
-                payload: [
-                    "source": "sample-app",
-                    "token": "demo-token"
-                ],
-                onClose: {
-                    showSDK = false
-                }
-            )
-        }
-    }
+
+var body: some View {
+NavigationStack {
+VStack(spacing: 20) {
+Text("sample-app")
+.font(.title2.bold())
+
+
+Button("Ouvrir Ecovelo SDK") {
+showSDK = true
+}
+.buttonStyle(.borderedProminent)
+}
+.navigationDestination(isPresented: $showSDK) {
+EcoveloSDKWrapper(
+initialPath: nil,
+payload: [
+"source": "sample-app",
+"token": "demo-token"
+],
+onClose: {
+showSDK = false
+}
+)
+.ignoresSafeArea() // 👈 vrai fullscreen
+}
+}
+}
 }
 
 #Preview {

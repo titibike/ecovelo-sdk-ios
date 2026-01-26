@@ -203,7 +203,14 @@
     {
       "filePath": "\/Users\/enzo\/Desktop\/DEV\/SDK-IOS\/EcoveloSDK\/EcoveloSDK\/EcoveloSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 1023,
+      "offset": 967,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/enzo\/Desktop\/DEV\/SDK-IOS\/EcoveloSDK\/EcoveloSDK\/EcoveloSDK.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1791,
       "length": 4,
       "value": "true"
     },
