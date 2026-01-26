@@ -26,8 +26,11 @@ Le SDK embarque un runtime **Capacitor iOS** et les **assets** de la webapp, ce 
 Pour le détail, voir `docs/ios/ARCHITECTURE.md`.
 
 ### 📦 Installation (XCFramework)
- 
- Se mettre à la racine du dossier EcoveloSDK et 
+#### Intégration dans l’app hôte (Xcode)
+1. Générer `EcoveloSDK.xcframework` 
+Depuis la racine du dossier `EcoveloSDK/`, exécuter :
+
+```bash
 pod install && xcodebuild archive \
   -workspace EcoveloSDK.xcworkspace \
   -scheme EcoveloSDK \
@@ -38,10 +41,9 @@ pod install && xcodebuild archive \
   BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild -create-xcframework \
   -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
   -output "./build/EcoveloSDK.xcframework"
+```
 
-#### Intégration dans l’app hôte (Xcode)
-
-1. Copier `EcoveloSDK.xcframework` dans votre repo (ex: `ThirdParty/Ecovelo/`).
+2. Copier `build/EcoveloSDK.xcframework` dans votre repo hôte (ex: `ThirdParty/Ecovelo/`).
 2. Dans Xcode (target de l’app hôte) :
    - **Frameworks, Libraries, and Embedded Content**
    - Ajouter `EcoveloSDK.xcframework`
@@ -141,22 +143,3 @@ Voir le détail dans `docs/ios/INTEGRATION.md`.
 ### 📄 Licence
 
 Propriétaire — Ecovelo © 
-
-
-COMMANDES POUR BUILD LE XCFRAMEWORK : 
-
-rm -rf build && xcodebuild archive \
-  -workspace EcoveloSDK.xcworkspace \
-  -scheme EcoveloSDK \
-  -configuration Release \
-  -destination "generic/platform=iOS" \
-  -archivePath "./build/EcoveloSDK-iOS" \
-  SKIP_INSTALL=NO \
-  BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild -create-xcframework \
-  -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
-  -output "./build/EcoveloSDK.xcframework"
-
-
-
-
-
