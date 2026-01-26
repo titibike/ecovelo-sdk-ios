@@ -2,7 +2,7 @@
 
 Ce document décrit l’intégration du SDK iOS Ecovelo dans ce repository :
 
-- SDK livré sous forme de **XCFramework**
+- SDK distribué sous forme de **XCFramework** (à générer depuis les sources)
 - UI présentée via un **point d’entrée unique** côté hôte (`UIViewController`)
 - Webapp embarquée dans le SDK (dossier `public/`) affichée via **Capacitor**
 - Liste des **dépendances CocoaPods**, des **permissions iOS** et des éléments de config à prévoir
@@ -13,13 +13,30 @@ Ce document décrit l’intégration du SDK iOS Ecovelo dans ce repository :
 - Swift 5.x
 - iOS 16+ (min)
 
-## 1) Ajouter `EcoveloSDK.xcframework` dans l’app hôte
+## 1) Générer et ajouter `EcoveloSDK.xcframework` dans l’app hôte
 
-1. Copier `EcoveloSDK.xcframework` dans votre repository (ex: `ThirdParty/Ecovelo/`).
-2. Dans Xcode (target de l’app hôte) :
+1. Générer `EcoveloSDK.xcframework`  
+   Depuis la racine du dossier `EcoveloSDK/`, exécuter :
+
+```bash
+pod install && xcodebuild archive \
+  -workspace EcoveloSDK.xcworkspace \
+  -scheme EcoveloSDK \
+  -configuration Release \
+  -destination "generic/platform=iOS" \
+  -archivePath "./build/EcoveloSDK-iOS" \
+  SKIP_INSTALL=NO \
+  BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild -create-xcframework \
+  -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
+  -output "./build/EcoveloSDK.xcframework"
+```
+
+2. Copier `build/EcoveloSDK.xcframework` dans votre repository hôte (ex: `ThirdParty/Ecovelo/`).
+3. Dans Xcode (target de l’app hôte) :
    - **Frameworks, Libraries, and Embedded Content**
    - Ajouter `EcoveloSDK.xcframework`
    - Régler sur **Embed & Sign**
+4. Vérifier le deployment target : **iOS 16+**.
 
 ## 2) Ajouter les pods requis (CocoaPods)
 
