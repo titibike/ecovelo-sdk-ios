@@ -6,7 +6,6 @@
 **/Podfile.lock
 
 # Xcode build
-**/build/
 **/DerivedData/
 **/*.xcuserstate
 **/xcuserdata/
@@ -16,7 +15,6 @@
 
 # Carthage / SPM
 Carthage/
-.build/
 .swiftpm/
 
 # Archives / output
@@ -24,6 +22,15 @@ Carthage/
 # Xcode user state (local only)
 **/*.xcuserstate
 **/xcuserdata/
-EcoveloSDK/build/
+
+# EcoveloSDK build outputs (keep the distributable XCFramework)
+EcoveloSDK/build/*
+!EcoveloSDK/build/EcoveloSDK.xcframework/
+!EcoveloSDK/build/EcoveloSDK.xcframework/**
+
+# Android build outputs under ios-deps
+ios-deps/**/android/build/
+ios-deps/**/dist/build/
+
 
 scripts

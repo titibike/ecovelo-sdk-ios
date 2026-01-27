@@ -29,7 +29,7 @@ target 'EcoveloSDK' do
   pod 'SentryCapacitor', :path => "#{IOS_DEPS}/@sentry/capacitor"
   pod 'CapacitorNativeSettings', :path => "#{IOS_DEPS}/capacitor-native-settings"
   pod 'CapacitorPluginAppTrackingTransparency', :path => "#{IOS_DEPS}/capacitor-plugin-app-tracking-transparency"
-  pod 'Firebase/Core'
+  pod 'Firebase/CoreOnly'
   pod 'Firebase/Messaging'
   pod 'Firebase/Installations'
   pod 'GoogleDataTransport'

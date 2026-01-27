@@ -9,6 +9,7 @@ require_relative "#{IOS_DEPS}/@capacitor/ios/scripts/pods_helpers"
 # Fonction pour ajouter les plugins Capacitor nécessaires
 def capacitor_pods
    pod 'Alamofire', '5.10.2'
+   pod 'EcoveloSDK', :path => "../EcoveloSDK"
    pod 'Capacitor', :path => "#{IOS_DEPS}/@capacitor/ios"
    pod 'CapacitorCordova', :path => "#{IOS_DEPS}/@capacitor/ios"  
    pod 'CapacitorCommunityNativeAudio', :path => "#{IOS_DEPS}/@capacitor-community/native-audio"
