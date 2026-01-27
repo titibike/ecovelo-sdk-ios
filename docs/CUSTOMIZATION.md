@@ -19,7 +19,7 @@ let vc = Ecovelo.makeViewController(initialPath: "/home")
 
 Le `payload` permet de passer un dictionnaire libre à destination de l’app web (ex: token, source, environnement).
 
-> L’injection effective côté web dépend d’un contrat JS/plugin Capacitor (voir `docs/ios/AUTH_SSO.md`).
+> L’injection effective côté web dépend d’un contrat JS/plugin Capacitor (voir `docs/AUTH_SSO.md`).
 
 Exemple :
 

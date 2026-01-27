@@ -2,7 +2,7 @@
 
 Ce document décrit l’intégration du SDK iOS Ecovelo dans ce repository :
 
-- SDK distribué sous forme de **XCFramework** (à générer depuis les sources)
+- SDK distribué via **CocoaPods** 
 - UI présentée via un **point d’entrée unique** côté hôte (`UIViewController`)
 - Webapp embarquée dans le SDK (dossier `public/`) affichée via **Capacitor**
 - Liste des **dépendances CocoaPods**, des **permissions iOS** et des éléments de config à prévoir
@@ -13,37 +13,30 @@ Ce document décrit l’intégration du SDK iOS Ecovelo dans ce repository :
 - Swift 5.x
 - iOS 16+ (min)
 
-## 1) Générer et ajouter `EcoveloSDK.xcframework` dans l’app hôte
+## 1) Installer `EcoveloSDK` via CocoaPods (recommandé)
 
-1. Générer `EcoveloSDK.xcframework`  
-   Cloner le repository
-   Aller à la la racine du dossier `EcoveloSDK/`, exécuter :
+Dans votre `Podfile` (cible de l’app hôte), référencer le SDK depuis Git (tag) :
 
 ```bash
-pod install && xcodebuild archive \
-  -workspace EcoveloSDK.xcworkspace \
-  -scheme EcoveloSDK \
-  -configuration Release \
-  -destination "generic/platform=iOS" \
-  -archivePath "./build/EcoveloSDK-iOS" \
-  SKIP_INSTALL=NO \
-  BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild -create-xcframework \
-  -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
-  -output "./build/EcoveloSDK.xcframework"
+pod 'EcoveloSDK', :git => 'https://github.com/titibike/ecovelo-sdk-ios.git', :tag => '1.0.1'
 ```
 
-2. Copier `build/EcoveloSDK.xcframework` dans votre repository hôte (ex: `ThirdParty/Ecovelo/`).
-3. Dans Xcode (target de l’app hôte) :
-   - **Frameworks, Libraries, and Embedded Content**
-   - Ajouter `EcoveloSDK.xcframework`
-   - Régler sur **Embed & Sign**
-4. Vérifier le deployment target : **iOS 16+**.
+Puis exécuter :
+
+```bash
+pod install
+```
+
+Et ouvrir le workspace `*.xcworkspace`.
 
 ## 2) Ajouter les pods requis (CocoaPods)
 
-Le framework `EcoveloSDK.xcframework` s’appuie sur **Capacitor** et plusieurs plugins natifs : l’app hôte doit donc linker ces dépendances.
+Le SDK s’appuie sur **Capacitor** et plusieurs plugins natifs. Selon votre mode d’intégration, ces dépendances peuvent être :
 
-> À date (jan. 2026), les pods sont référencés en **local** (via `:path`) comme dans `sample-app/Podfile`, ils sont présents dans le repo sous le dossier `ios-deps/`.  
+- **tirées automatiquement** via le pod `EcoveloSDK`
+- ou **déclarées explicitement** dans votre `Podfile` (voir `sample-app/Podfile`)
+
+> Dans ce repo, `sample-app/Podfile` référence `EcoveloSDK` depuis Git (tag) et conserve les plugins Capacitor en **local** (via `:path`) sous `ios-deps/`.
 
 
 ### Pods minimum (référence: `sample-app/Podfile`)
@@ -71,7 +64,7 @@ Le framework `EcoveloSDK.xcframework` s’appuie sur **Capacitor** et plusieurs 
   - `CapacitorNativeSettings`
   - `CapacitorPluginAppTrackingTransparency`
 - Firebase (Push Notifications / FCM) :
-  - `Firebase/Core`
+  - `Firebase/CoreOnly`
   - `Firebase/Messaging`
   - `Firebase/Installations`
   - (dépendances transitives visibles dans le sample) `GoogleDataTransport`, `GoogleUtilities`, `nanopb`

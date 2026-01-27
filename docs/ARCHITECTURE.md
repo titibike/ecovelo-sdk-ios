@@ -89,7 +89,7 @@ Ce payload est actuellement prévu pour fournir du contexte à la webapp (ex: to
 
 ## Limites iOS spécifiques (à connaître)
 
-- **Délégation des permissions** : sur iOS, les permissions sont pilotées par l’application hôte via `Info.plist` (voir `docs/ios/INTEGRATION.md`).
-- **Dépendances plugins Capacitor** : la présence effective des plugins côté iOS dépend des frameworks intégrés (CocoaPods). Un plugin manquant produit typiquement un `UNIMPLEMENTED` côté JS.
-- **Config spécifique hôte** : certaines valeurs (Stripe merchant id, LiveUpdate, etc.) vivent dans `capacitor.config.json` (voir `docs/ios/INTEGRATION.md`).
+- **Délégation des permissions** : sur iOS, les permissions sont pilotées par l’application hôte via `Info.plist` (voir `docs/INTEGRATION.md`).
+- **Dépendances plugins Capacitor** : la présence effective des plugins côté iOS dépend de l’intégration CocoaPods. Un plugin manquant produit typiquement un `UNIMPLEMENTED` côté JS.
+- **Config spécifique hôte** : certaines valeurs (Stripe merchant id, LiveUpdate, etc.) vivent dans `capacitor.config.json` (voir `docs/INTEGRATION.md`).
 

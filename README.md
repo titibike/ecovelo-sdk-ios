@@ -23,41 +23,30 @@ Le SDK embarque un runtime **Capacitor iOS** et les **assets** de la webapp, ce 
 - **Plugins Capacitor natifs** utilisables (selon ce qui est livré / intégré côté iOS)
 - **Point d’entrée unique** côté hôte (SwiftUI ou UIKit)
 
-Pour le détail, voir `docs/ios/ARCHITECTURE.md`.
+Pour le détail, voir `docs/ARCHITECTURE.md`.
 
-### 📦 Installation (XCFramework)
-#### Intégration dans l’app hôte (Xcode)
-1. Générer `EcoveloSDK.xcframework` 
-Depuis la racine du dossier `EcoveloSDK/`, exécuter :
+### 📦 Installation (CocoaPods)
 
-```bash
-pod install && xcodebuild archive \
-  -workspace EcoveloSDK.xcworkspace \
-  -scheme EcoveloSDK \
-  -configuration Release \
-  -destination "generic/platform=iOS" \
-  -archivePath "./build/EcoveloSDK-iOS" \
-  SKIP_INSTALL=NO \
-  BUILD_LIBRARY_FOR_DISTRIBUTION=YES && xcodebuild -create-xcframework \
-  -framework "./build/EcoveloSDK-iOS.xcarchive/Products/Library/Frameworks/EcoveloSDK.framework" \
-  -output "./build/EcoveloSDK.xcframework"
+Le SDK est distribué via CocoaPods (pod binaire embarquant une XCFramework).
+
+Dans votre `Podfile` :
+
+```ruby
+pod 'EcoveloSDK', :git => 'https://github.com/titibike/ecovelo-sdk-ios.git', :tag => '1.0.1'
 ```
 
-2. Copier `build/EcoveloSDK.xcframework` dans votre repo hôte (ex: `ThirdParty/Ecovelo/`).
-2. Dans Xcode (target de l’app hôte) :
-   - **Frameworks, Libraries, and Embedded Content**
-   - Ajouter `EcoveloSDK.xcframework`
-   - Régler l’embed sur **Embed & Sign**
-3. Vérifier le deployment target : **iOS 16+**.
+Puis :
 
-> Selon le mode de livraison, vous pouvez également recevoir un “bundle” incluant des dépendances (Capacitor/plugins). Dans ce cas, ajoutez aussi les `*.xcframework` associées.
+```bash
+pod install
+```
 
-Pour le guide intégrateur complet (distribution, checklist), voir `docs/ios/INTEGRATION.md`.
+Pour le guide intégrateur complet (checklist, permissions), voir `docs/INTEGRATION.md`.
 
 ### 🔐 Authentification SSO (token IAM Cityway)
 
 Conformément au contrat iOS, **le SDK ne fait pas le login SSO**.  
-L’app hôte gère OIDC/SSO (ex: `mon-compte.bzh`), et peut fournir un contexte à la webapp via `payload` (voir `docs/ios/AUTH_SSO.md`).
+L’app hôte gère OIDC/SSO (ex: `mon-compte.bzh`), et peut fournir un contexte à la webapp via `payload` (voir `docs/AUTH_SSO.md`).
 
 ### 🚀 Utilisation
 Le SDK expose un **point d’entrée unique** qui retourne un `UIViewController` prêt à être présenté.  
@@ -109,7 +98,7 @@ struct EcoveloSDKWrapper: UIViewControllerRepresentable {
 ### 🎨 Personnalisation
 
 La surface de personnalisation côté iOS est volontairement **réduite** (ex: `initialPath`, `payload`).  
-Voir `docs/ios/CUSTOMIZATION.md`.
+Voir `docs/CUSTOMIZATION.md`.
 
 ### 📋 Prérequis
 
@@ -130,15 +119,15 @@ Sur iOS, les permissions sont déclarées dans l’app hôte (`Info.plist`). Sel
 - `NSPhotoLibraryUsageDescription` / `NSPhotoLibraryAddUsageDescription` (upload/sauvegarde photos)
 - `NSUserTrackingUsageDescription` (ATT si activé)
 
-Voir le détail dans `docs/ios/INTEGRATION.md`.
+Voir le détail dans `docs/INTEGRATION.md`.
 
 
 ### 📚 Documentation
 
-- `docs/ios/INTEGRATION.md` : guide d’intégration iOS (XCFramework, checklist, permissions)
-- `docs/ios/AUTH_SSO.md` : contrat SSO / token IAM (responsabilités hôte vs SDK)
-- `docs/ios/ARCHITECTURE.md` : architecture du conteneur iOS
-- `docs/ios/CUSTOMIZATION.md` : options de personnalisation
+- `docs/INTEGRATION.md` : guide d’intégration iOS (CocoaPods, checklist, permissions)
+- `docs/AUTH_SSO.md` : contrat SSO / token IAM (responsabilités hôte vs SDK)
+- `docs/ARCHITECTURE.md` : architecture du conteneur iOS
+- `docs/CUSTOMIZATION.md` : options de personnalisation
 
 ### 📄 Licence
 
