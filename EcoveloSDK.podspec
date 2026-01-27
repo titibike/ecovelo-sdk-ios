@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'EcoveloSDK'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Ecovelo iOS SDK (Capacitor-based) distributed as a binary XCFramework.'
   s.description      = <<-DESC
 EcoveloSDK provides a UIKit view controller wrapper around a Capacitor webapp.
