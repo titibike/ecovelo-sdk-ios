@@ -9,7 +9,7 @@ require_relative "#{IOS_DEPS}/@capacitor/ios/scripts/pods_helpers"
 # Fonction pour ajouter les plugins Capacitor nécessaires
 def capacitor_pods
    pod 'Alamofire', '5.10.2'
-   pod 'EcoveloSDK', :path => "../EcoveloSDK"
+   pod 'EcoveloSDK', :git => 'https://github.com/titibike/ecovelo-sdk-ios.git', :tag => '1.0.1'
    pod 'Capacitor', :path => "#{IOS_DEPS}/@capacitor/ios"
    pod 'CapacitorCordova', :path => "#{IOS_DEPS}/@capacitor/ios"  
    pod 'CapacitorCommunityNativeAudio', :path => "#{IOS_DEPS}/@capacitor-community/native-audio"
@@ -31,7 +31,7 @@ def capacitor_pods
    pod 'SentryCapacitor', :path => "#{IOS_DEPS}/@sentry/capacitor"
    pod 'CapacitorNativeSettings', :path => "#{IOS_DEPS}/capacitor-native-settings"
    pod 'CapacitorPluginAppTrackingTransparency', :path => "#{IOS_DEPS}/capacitor-plugin-app-tracking-transparency"
-  pod 'Firebase/Core'
+  pod 'Firebase/CoreOnly'
   pod 'Firebase/Messaging'
   pod 'Firebase/Installations'
   pod 'GoogleDataTransport'

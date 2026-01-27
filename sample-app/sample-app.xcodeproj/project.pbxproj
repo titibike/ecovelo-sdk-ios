@@ -33,6 +33,8 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C647A4442F225E9300B07559 /* sample-app */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = "sample-app";
 			sourceTree = "<group>";
 		};
@@ -185,12 +187,8 @@
 			);
 			inputFileListPaths = (
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
