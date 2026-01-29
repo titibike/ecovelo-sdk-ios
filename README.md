@@ -5,15 +5,13 @@ SDK permettant l’intégration du parcours usager de location d’un VLS **Ecov
 
 ### 🎯 Contexte
 
-Ce SDK a été conçu pour le projet **Breizhgo – Vélos en Gare Bretagne** (15 gares) en partenariat avec **Cityway**.  
-Il encapsule l’application **Ionic / Capacitor** d’Ecovelo dans un **conteneur iOS autonome**, facilement intégrable dans une app hôte.
+Ce SDK encapsule l’application **Ionic / Capacitor** d’Ecovelo dans un **conteneur iOS autonome**, facilement intégrable dans une app hôte.
 
-### Spécificités du projet Breizhgo
+### Principes d’intégration (génériques)
 
-- **Authentification SSO** via `mon-compte.bzh` (OpenID Connect) gérée par l’app hôte
-- **Fourniture d’un token IAM Cityway** au SDK au moment du lancement
-- **Parcours de réservation** en amont d’un trajet
-- **Flow téléphone** : le numéro de téléphone n’étant pas fourni par le SSO, ce cas est géré côté webapp (ou via un mécanisme à définir avec l’hôte)
+- **Authentification** : l’app hôte gère l’authentification (ex: OpenID Connect / OAuth2) et fournit au SDK le contexte nécessaire au lancement (ex: access token) via `payload`
+- **Parcours** : la webapp embarquée pilote le parcours (réservation, location, etc.) et s’appuie sur les plugins Capacitor natifs fournis
+- **Données manquantes** (ex: téléphone) : si certaines informations ne sont pas disponibles via l’auth, ce cas doit être géré côté webapp ou via un mécanisme d’échange défini avec l’hôte
 
 ### 🏗️ Architecture
 
@@ -43,10 +41,10 @@ pod install
 
 Pour le guide intégrateur complet (checklist, permissions), voir `docs/INTEGRATION.md`.
 
-### 🔐 Authentification SSO (token IAM Cityway)
+### 🔐 Authentification (SSO / OIDC / OAuth2)
 
-Conformément au contrat iOS, **le SDK ne fait pas le login SSO**.  
-L’app hôte gère OIDC/SSO (ex: `mon-compte.bzh`), et peut fournir un contexte à la webapp via `payload` (voir `docs/AUTH_SSO.md`).
+Conformément au contrat iOS, **le SDK ne réalise pas le login**.  
+L’app hôte gère l’authentification (ex: OIDC/OAuth2) et peut fournir un contexte à la webapp via `payload` (voir `docs/AUTH_SSO.md`).
 
 ### 🚀 Utilisation
 Le SDK expose un **point d’entrée unique** qui retourne un `UIViewController` prêt à être présenté.  
@@ -102,10 +100,10 @@ Voir `docs/CUSTOMIZATION.md`.
 
 ### 📋 Prérequis
 
-- **iOS 16 minimum** (exigence Cityway / DOC01010)
+- **iOS 16 minimum**
 - Xcode 15+ (recommandé)
 - Swift 5.x
-- L’app hôte doit gérer l’authentification IAM (SSO/OIDC) et fournir le token au SDK
+- L’app hôte doit gérer l’authentification (SSO/OIDC/OAuth2) et fournir les informations nécessaires au SDK (ex: access token)
 
 ### ⚠️ Notes importantes
 

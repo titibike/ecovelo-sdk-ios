@@ -5,7 +5,7 @@
 Le SDK iOS Ecovelo embarque une webapp (Capacitor) et **ne réalise pas** le login SSO côté natif.  
 L’application hôte reste responsable de :
 
-- gérer le SSO / OIDC (ex: `mon-compte.bzh`)
+- gérer l’authentification (SSO / OIDC / OAuth2)
 - stocker/rafraîchir les tokens de manière sécurisée (Keychain, etc.)
 - décider comment rendre disponible un “contexte” à la webapp (ex: token, environnement, source)
 
@@ -45,7 +45,7 @@ Dans l’état actuel du code, le `payload` est transmis au contrôleur Capacito
 
 ### 2) Mode exploration (pas de token)
 
-Le DOC01010 n’impose pas explicitement un mode “exploration”.  
+Le SDK n’impose pas explicitement un mode “exploration”.  
 Si le produit le souhaite, il faut **le gérer côté webapp** (Ionic) :
 
 - si pas de token (clé absente/empty), restreindre certaines actions
